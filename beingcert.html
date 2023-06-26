@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link
+            rel="icon" type="image/png" sizes="200x200"
+            href="img/icons/favi-icon.png" /><link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+            crossorigin="anonymous" /><link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" /><link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /><link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" /><link
+            rel="stylesheet" href="https://www.beingcert.com/css0/style.css" /><link
+            rel="stylesheet" href="css0/intlTelInput.css" /><title>
+            Beingcert
+        </title>
+        <style>
+        .mr-1{ margin-right:0.25rem;}
+        .bi-headset{ font-size:35px;}
+    </style>
+        <script>
+    //navbar//
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.dropdown-menu').forEach(function (element) {
+                element.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            })
+            // make it as accordion for smaller screens
+            if (window.innerWidth < 992) {
+
+                // close all inner dropdowns when parent is closed
+                document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+                    everydropdown.addEventListener('hidden.bs.dropdown', function () {
+                        // after dropdown is hidden, then find all submenus
+                        this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+                            // hide every submenu as well
+                            everysubmenu.style.display = 'none';
+                        });
+                    })
+                });
+
+                document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+                    element.addEventListener('click', function (e) {
+                        let nextEl = this.nextElementSibling;
+                        if (nextEl && nextEl.classList.contains('submenu')) {
+                            // prevent opening link if link needs to open dropdown
+                            e.preventDefault();
+                            console.log(nextEl);
+                            if (nextEl.style.display == 'block') {
+                                nextEl.style.display = 'none';
+                            } else {
+                                nextEl.style.display = 'block';
+                            }
+
+                        }
+                    });
+                })
+            }
+        });
+    </script>
+    </head>
+    <body>
+        <form name="aspnetForm" method="post" action="./about" id="aspnetForm">
+            <div>
+                <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+                    value="/wEPDwUKMTY1NDU2MTA1Mg8WAh4TVmFsaWRhdGVSZXF1ZXN0TW9kZQIBFgJmD2QWAgIDD2QWAmYPFgIeC18hSXRlbUNvdW50AgoWFGYPZBYGAgEPDxYCHgRUZXh0BQI2MmRkAgIPFQEVRW1lcmdpbmcgVGVjaG5vbG9naWVzZAIDDxYCHwECBBYIZg9kFgJmDxUCGWNlcnRpZmllZC1haS1wcm9mZXNzaW9uYWwjQmVpbmdjZXJ0IENlcnRpZmllZCBBSSBQcm9mZXNzaW9uYWxkAgEPZBYCZg8VAhpjZXJ0aWZpZWQtaW90LXByb2Zlc3Npb25hbCRCZWluZ2NlcnQgQ2VydGlmaWVkIElvVCBQcm9mZXNzaW9uYWxkAgIPZBYCZg8VAiFjZXJ0aWZpZWQtYmxvY2tjaGFpbi1wcm9mZXNzaW9uYWwrQmVpbmdjZXJ0IENlcnRpZmllZCBCbG9ja2NoYWluIFByb2Zlc3Npb25hbGQCAw9kFgJmDxUCHm1hY2hpbmUtbGVhcm5pbmctY2VydGlmaWNhdGlvbidCZWluZ2NlcnQgTWFjaGluZSBMZWFybmluZyBQcm9mZXNzaW9uYWxkAgEPZBYGAgEPDxYCHwIFAjYzZGQCAg8VAQhTb2Z0d2FyZWQCAw8WAh8BAgYWDGYPZBYCZg8VAhpjZXJ0aWZpZWQtcHl0aG9uLWRldmVsb3BlciRCZWluZ2NlcnQgQ2VydGlmaWVkIFB5dGhvbiBEZXZlbG9wZXJkAgEPZBYCZg8VAiZjZXJ0aWZpZWQtc29mdHdhcmUtdGVzdGVyLXByb2Zlc3Npb25hbDFCZWluZ2NlcnQgQ2VydGlmaWVkIFNvZnR3YXJlIFRlc3RpbmcgUHJvZmVzc2lvbmFsZAICD2QWAmYPFQIdY2VydGlmaWVkLWRldm9wcy1wcm9mZXNzaW9uYWwnQmVpbmdjZXJ0IENlcnRpZmllZCBEZXZPcHMgUHJvZmVzc2lvbmFsZAIDD2QWAmYPFQIXY2VydGlmaWVkLXdlYi1kZXZlbG9wZXIhQmVpbmdjZXJ0IENlcnRpZmllZCBXZWIgRGV2ZWxvcGVyZAIED2QWAmYPFQIeY2VydGlmaWVkLWZ1bGwtc3RhY2stZGV2ZWxvcGVyKEJlaW5nY2VydCBDZXJ0aWZpZWQgRnVsbCBTdGFjayBEZXZlbG9wZXJkAgUPZBYCZg8VAiRjZXJ0aWZpZWQtc2VjdXJlLWNvZGluZy1wcm9mZXNzaW9uYWwuQmVpbmdjZXJ0IENlcnRpZmllZCBTZWN1cmUgQ29kaW5nIFByb2Zlc3Npb25hbGQCAg9kFgYCAQ8PFgIfAgUCNjRkZAICDxUBDkN5YmVyIFNlY3VyaXR5ZAIDDxYCHwECBBYIZg9kFgJmDxUCHmNlcnRpZmllZC1wZW50ZXN0LXByb2Zlc3Npb25hbChCZWluZ2NlcnQgQ2VydGlmaWVkIFBlbnRlc3QgUHJvZmVzc2lvbmFsZAIBD2QWAmYPFQIlY2VydGlmaWVkLWNsb3VkLXNlY3VyaXR5LXByb2Zlc3Npb25hbC9CZWluZ2NlcnQgQ2VydGlmaWVkIENsb3VkIFNlY3VyaXR5IFByb2Zlc3Npb25hbGQCAg9kFgJmDxUCJWNlcnRpZmllZC1jeWJlci1zZWN1cml0eS1wcm9mZXNzaW9uYWwvQmVpbmdjZXJ0IENlcnRpZmllZCBDeWJlciBTZWN1cml0eSBQcm9mZXNzaW9uYWxkAgMPZBYCZg8VAiNjZXJ0aWZpZWQtc29jLWFuYWx5c3QtY2VydGlmaWNhdGlvbi1CZWluZ2NlcnQgQ2VydGlmaWVkIFNPQyBBbmFseXN0IENlcnRpZmljYXRpb25kAgMPZBYGAgEPDxYCHwIFAjY1ZGQCAg8VARFEaWdpdGFsIE1hcmtldGluZ2QCAw8WAh8BAgEWAmYPZBYCZg8VAihjZXJ0aWZpZWQtZGlnaXRhbC1tYXJrZXRpbmctcHJvZmVzc2lvbmFsMkJlaW5nY2VydCBDZXJ0aWZpZWQgRGlnaXRhbCBNYXJrZXRpbmcgUHJvZmVzc2lvbmFsZAIED2QWBgIBDw8WAh8CBQI2NmRkAgIPFQEXQnVzaW5lc3MgQ2VydGlmaWNhdGlvbnNkAgMPFgIfAQIBFgJmD2QWAmYPFQIaY2VydGlmaWVkLWJ1c2luZXNzLWFuYWx5c3QkQmVpbmdjZXJ0IENlcnRpZmllZCBCdXNpbmVzcyBBbmFseXN0ZAIFD2QWBgIBDw8WAh8CBQI2N2RkAgIPFQEDSVNPZAIDDxYCHwECBhYMZg9kFgJmDxUCImNlcnRpZmllZC1pc28taWVjLTI3MDAxLWZvdW5kYXRpb24tQmVpbmdjZXJ0IENlcnRpZmllZCBJU08vSUVDIDI3MDAxOiBGb3VuZGF0aW9uZAIBD2QWAmYPFQIkY2VydGlmaWVkLWlzby1pZWMtMjcwMDEtbGVhZC1hdWRpdG9yL0JlaW5nY2VydCBDZXJ0aWZpZWQgSVNPL0lFQyAyNzAwMTogTGVhZCBBdWRpdG9yZAICD2QWAmYPFQIpY2VydGlmaWVkLWlzby1pZWMtMjcwMDAxLWxlYWQtaW1wbGVtZW50b3IzQmVpbmdjZXJ0IENlcnRpZmllZCBJU08vSUVDIDI3MDAxOiBMZWFkIEltcGxlbWVudG9yZAIDD2QWAmYPFQIdY2VydGlmaWVkLWlzby05MDAxLWZvdW5kYXRpb24oQmVpbmdjZXJ0IENlcnRpZmllZCBJU08gOTAwMTogRm91bmRhdGlvbmQCBA9kFgJmDxUCH2NlcnRpZmllZC1pc28tOTAwMS1sZWFkLWF1ZGl0b3IqQmVpbmdjZXJ0IENlcnRpZmllZCBJU08gOTAwMTogTGVhZCBBdWRpdG9yZAIFD2QWAmYPFQIjY2VydGlmaWVkLWlzby05MDAxLWxlYWQtaW1wbGVtZW50b3IuQmVpbmdjZXJ0IENlcnRpZmllZCBJU08gOTAwMTogTGVhZCBJbXBsZW1lbnRvcmQCBg9kFgYCAQ8PFgIfAgUCNjhkZAICDxUBElF1YWxpdHkgTWFuYWdlbWVudGQCAw8WAh8BAgMWBmYPZBYCZg8VAiFjZXJ0aWZpZWQtZ3JlZW4tQmVsdC1wcm9mZXNzaW9uYWw6QmVpbmdjZXJ0IENlcnRpZmllZCBMZWFuIFNpeCBTaWdtYSBHcmVlbiBCZWx0IFByb2Zlc3Npb25hbGQCAQ9kFgJmDxUCIWNlcnRpZmllZC1ibGFjay1iZWx0LXByb2Zlc3Npb25hbDpCZWluZ2NlcnQgQ2VydGlmaWVkIExlYW4gU2l4IFNpZ21hIEJsYWNrIEJlbHQgUHJvZmVzc2lvbmFsZAICD2QWAmYPFQIiY2VydGlmaWVkLXllbGxvdy1iZWx0LXByb2Zlc3Npb25hbDtCZWluZ2NlcnQgQ2VydGlmaWVkIExlYW4gU2l4IFNpZ21hIFllbGxvdyBCZWx0IFByb2Zlc3Npb25hbGQCBw9kFgYCAQ8PFgIfAgUCNjlkZAICDxUBElByb2plY3QgTWFuYWdlbWVudGQCAw8WAh8BAgMWBmYPZBYCZg8VAiljZXJ0aWZpZWQtcHJvamVjdC1tYW5hZ2VtZW50LXByb2Zlc3Npb25hbDNCZWluZ2NlcnQgQ2VydGlmaWVkIFByb2plY3QgTWFuYWdlbWVudCBQcm9mZXNzaW9uYWxkAgEPZBYCZg8VAhxjZXJ0aWZpZWQtc2NydW0tcHJvZmVzc2lvbmFsJkJlaW5nY2VydCBDZXJ0aWZpZWQgU2NydW0gUHJvZmVzc2lvbmFsZAICD2QWAmYPFQIWY2VydGlmaWVkLXNjcnVtLW1hc3RlciBCZWluZ2NlcnQgQ2VydGlmaWVkIFNjcnVtIE1hc3RlcmQCCA9kFgYCAQ8PFgIfAgUCNzBkZAICDxUBCEJpZyBEYXRhZAIDDxYCHwECAxYGZg9kFgJmDxUCH2NlcnRpZmllZC1iaWctZGF0YS1wcm9mZXNzaW9uYWwpQmVpbmdjZXJ0IENlcnRpZmllZCBCaWcgRGF0YSBQcm9mZXNzaW9uYWxkAgEPZBYCZg8VAh1jZXJ0aWZpZWQtaGFkb29wLXByb2Zlc3Npb25hbCdCZWluZ2NlcnQgQ2VydGlmaWVkIEhhZG9vcCBQcm9mZXNzaW9uYWxkAgIPZBYCZg8VAhhjZXJ0aWZpZWQtZGF0YS1hbmFseXRpY3MgQmVpbmdjZXJ0IENlcnRpZmllZCBEYXRhIEFuYWx5c3RkAgkPZBYGAgEPDxYCHwIFAjcxZGQCAg8VARNDdXN0b21lciBFeHBlcmllbmNlZAIDDxYCHwECARYCZg9kFgJmDxUCHWNlcnRpZmllZC1jdXN0b21lci1leHBlcmllbmNlNEJlaW5nY2VydCBDZXJ0aWZpZWQgQ3VzdG9tZXIgRXhwZXJpZW5jZSBQcm9mZXNzaW9uYWxkZJB5p7rBf9H5NLdgUsRGJ2x/TDCX" />
+            </div>
+
+            <div>
+
+                <input type="hidden" name="__VIEWSTATEGENERATOR"
+                    id="__VIEWSTATEGENERATOR" value="E809BCA5" />
+            </div>
+            <!-- navbar start-->
+            <section id="navbar-start">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav
+                                class="navbar navbar-expand-lg bg-body-tertiary">
+                                <div class="container-fluid">
+                                    <a class="navbar-brand"
+                                        href="https://www.beingcert.com">
+                                        <img
+                                            src="https://www.beingcert.com/img/Logo.png"
+                                            class="img-fluid logo" />
+                                    </a>
+                                    <button class="navbar-toggler" type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#navbarSupportedContent"
+                                        aria-controls="navbarSupportedContent"
+                                        aria-expanded="false"
+                                        aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse"
+                                        id="navbarSupportedContent">
+                                        <ul
+                                            class="navbar-nav m-auto mb-2 mb-lg-0">
+                                            <li class="nav-item">
+                                                <a class="nav-link "
+                                                    href="https://www.beingcert.com/about">About
+                                                    Us</a>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a
+                                                    class="nav-link dropdown-toggle"
+                                                    href="#" role="button"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">Certifications
+                                                </a>
+                                                <ul class="dropdown-menu">
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Emerging
+                                                            Technologies </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-ai-professional"><span>Beingcert
+                                                                        Certified
+                                                                        AI
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-iot-professional"><span>Beingcert
+                                                                        Certified
+                                                                        IoT
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-blockchain-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Blockchain
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/machine-learning-certification"><span>Beingcert
+                                                                        Machine
+                                                                        Learning
+                                                                        Professional</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Software
+                                                        </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-python-developer"><span>Beingcert
+                                                                        Certified
+                                                                        Python
+                                                                        Developer</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-software-tester-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Software
+                                                                        Testing
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-devops-professional"><span>Beingcert
+                                                                        Certified
+                                                                        DevOps
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-web-developer"><span>Beingcert
+                                                                        Certified
+                                                                        Web
+                                                                        Developer</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-full-stack-developer"><span>Beingcert
+                                                                        Certified
+                                                                        Full
+                                                                        Stack
+                                                                        Developer</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-secure-coding-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Secure
+                                                                        Coding
+                                                                        Professional</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Cyber
+                                                            Security </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-pentest-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Pentest
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-cloud-security-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Cloud
+                                                                        Security
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-cyber-security-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Cyber
+                                                                        Security
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-soc-analyst-certification"><span>Beingcert
+                                                                        Certified
+                                                                        SOC
+                                                                        Analyst
+                                                                        Certification</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Digital
+                                                            Marketing </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-digital-marketing-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Digital
+                                                                        Marketing
+                                                                        Professional</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Business
+                                                            Certifications </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-business-analyst"><span>Beingcert
+                                                                        Certified
+                                                                        Business
+                                                                        Analyst</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">ISO </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-iso-iec-27001-foundation"><span>Beingcert
+                                                                        Certified
+                                                                        ISO/IEC
+                                                                        27001:
+                                                                        Foundation</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-iso-iec-27001-lead-auditor"><span>Beingcert
+                                                                        Certified
+                                                                        ISO/IEC
+                                                                        27001:
+                                                                        Lead
+                                                                        Auditor</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-iso-iec-270001-lead-implementor"><span>Beingcert
+                                                                        Certified
+                                                                        ISO/IEC
+                                                                        27001:
+                                                                        Lead
+                                                                        Implementor</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-iso-9001-foundation"><span>Beingcert
+                                                                        Certified
+                                                                        ISO
+                                                                        9001:
+                                                                        Foundation</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-iso-9001-lead-auditor"><span>Beingcert
+                                                                        Certified
+                                                                        ISO
+                                                                        9001:
+                                                                        Lead
+                                                                        Auditor</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-iso-9001-lead-implementor"><span>Beingcert
+                                                                        Certified
+                                                                        ISO
+                                                                        9001:
+                                                                        Lead
+                                                                        Implementor</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Quality
+                                                            Management </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-green-Belt-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Lean Six
+                                                                        Sigma
+                                                                        Green
+                                                                        Belt
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-black-belt-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Lean Six
+                                                                        Sigma
+                                                                        Black
+                                                                        Belt
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-yellow-belt-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Lean Six
+                                                                        Sigma
+                                                                        Yellow
+                                                                        Belt
+                                                                        Professional</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Project
+                                                            Management </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-project-management-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Project
+                                                                        Management
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-scrum-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Scrum
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-scrum-master"><span>Beingcert
+                                                                        Certified
+                                                                        Scrum
+                                                                        Master</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Big Data
+                                                        </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-big-data-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Big Data
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-hadoop-professional"><span>Beingcert
+                                                                        Certified
+                                                                        Hadoop
+                                                                        Professional</span></a></li>
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-data-analytics"><span>Beingcert
+                                                                        Certified
+                                                                        Data
+                                                                        Analyst</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                    <li>
+                                                        <a
+                                                            class="dropdown-item dropdown-toggle"
+                                                            href="#">Customer
+                                                            Experience </a>
+                                                        <ul
+                                                            class="submenu dropdown-menu">
+
+                                                            <li><a
+                                                                    class="dropdown-item"
+                                                                    href="https://www.beingcert.com/Certification/certified-customer-experience"><span>Beingcert
+                                                                        Certified
+                                                                        Customer
+                                                                        Experience
+                                                                        Professional</span></a></li>
+
+                                                        </ul>
+                                                    </li>
+
+                                                </ul>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a
+                                                    class="nav-link dropdown-toggle"
+                                                    href="#" role="button"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">Become
+                                                    A Partner</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item"
+                                                            href="https://www.beingcert.com/academic-partner">Academic
+                                                            Partner </a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="https://www.beingcert.com/delivery-partner">Delivery
+                                                            Partner </a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a
+                                                    class="nav-link dropdown-toggle"
+                                                    href="#" role="button"
+                                                    data-bs-toggle="dropdown"
+                                                    aria-expanded="false">Testing</a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item"
+                                                            href="https://www.beingcert.com/about-testing">About
+                                                            Testing </a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="https://www.beingcert.com/testing-options">Testing
+                                                            Options </a></li>
+                                                    <li><a class="dropdown-item"
+                                                            href="https://www.beingcert.com/locate-test-center">Locate
+                                                            a Test Center </a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                    href="https://www.beingcert.com/blog">Blog
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"
+                                                    href="https://www.beingcert.com/contact">Contact
+                                                    Us </a>
+                                            </li>
+                                        </ul>
+                                        <style>
+                                        .nav-search {
+                                            position: relative;
+                                        }
+
+                                        .search-input {
+                                            right: 0px;
+                                            padding: 0px;
+                                            width: 250px;
+                                        }
+
+                                            .search-input.show[data-bs-popper] {
+                                                right: 0px !important;
+                                                left: auto;
+                                            }
+
+                                        #ui-id-1 {
+                                            right: auto !important;
+                                            background: #fff;
+                                            width: max-content;
+                                            box-shadow: 2px 5px 10px rgba(0,0,0,0.7);
+                                            overflow-y: scroll;
+                                            max-height: 350px;
+                                            cursor:pointer;
+                                            padding:0px;
+                                        }
+                                        div.ui-menu-item-wrapper{ 
+                                            padding:5px 10px;
+                                            transition:0.5s;
+                                        }
+                                        div.ui-menu-item-wrapper:hover{
+                                            background:var(--bgcolor);
+                                            color:#fff;
+                                            padding:5px 10px;
+                                        }
+                                        #ui-id-1 li {
+                                            list-style: none;
+
+                                        }
+                                    </style>
+                                        <div class="d-flex rightbox"
+                                            role="search">
+                                            <button
+                                                class="btn btn-outline-cus lo_reg"><a
+                                                    href="login" class="login">Login
+                                                    / Register </a></button>
+                                            <button class="btn  nav-search "
+                                                type="submit"
+                                                data-bs-toggle="dropdown"
+                                                role="button">
+                                                <a href="#"><i
+                                                        class="fa fa-search"
+                                                        aria-hidden="true"></i></a>
+                                            </button>
+                                            <div
+                                                class="dropdown-menu search-input">
+                                                <input
+                                                    id="txtSearchCertification"
+                                                    type="text"
+                                                    class="form-control"
+                                                    autocomplete="off"
+                                                    placeholder="Search Certifications Here"
+                                                    onclick="Loaddata();" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- navbar end-->
+
+            <!--breadcrumb start-->
+            <section class="bread-sec">
+                <div class="container">
+                    <div class="row">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a
+                                        href="https://www.beingcert.com"><i
+                                            class="fa fa-home"
+                                            aria-hidden="true"></i>Home</a></li>
+                                <li class="breadcrumb-item active"
+                                    aria-current="page">About Us</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </section>
+            <!--breadcrumb end-->
+
+            <!--whowearestart-->
+            <section id="who" class="cus-y-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 title">
+                            <h4> About Us </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 text order-lg-1 order-2">
+                            <p>
+                                Welcome to Beingcert, a globally recognized
+                                vendor-neutral certification body that is
+                                committed to developing industry-standard
+                                certification exams in a wide range of domains
+                                including Cybersecurity, Emerging Technology,
+                                Software, Data Analytics, ISO, and Quality
+                                Management.
+                            </p>
+                            <p>
+                                We pride ourselves on offering high-quality
+                                certification programs that are designed to meet
+                                the ever-evolving needs of the industry. Our
+                                certification exams are developed by subject
+                                matter experts who possess years of industry
+                                experience, ensuring that our exams are
+                                comprehensive, practical, and relevant to the
+                                current market trends.
+                            </p>
+                            <p>
+                                At Beingcert, we understand the importance of
+                                building a skilled workforce that can meet the
+                                demands of the ever-changing technology
+                                landscape. Hence, we partner with leading
+                                training organizations, corporate entities,
+                                government bodies, and academic institutions
+                                around the world to deliver high-quality tech
+                                talent that can take on the challenges of the
+                                digital age.
+                            </p>
+                            <p>
+                                Our certifications are recognized globally and
+                                are highly valued by employers, as they
+                                demonstrate the candidate's expertise and
+                                practical skills in their respective domains. We
+                                offer a range of certification exams that cater
+                                to professionals at all levels, from entry-level
+                                to advanced, ensuring that our programs are
+                                accessible to everyone.
+                            </p>
+                            <p>
+                                Whether you are a student looking to kick-start
+                                your career in tech or a seasoned professional
+                                looking to enhance your skills, Beingcert has a
+                                certification program that is tailored to your
+                                needs. Join us today and take the first step
+                                towards achieving your career goals!
+                            </p>
+                        </div>
+                        <div class="col-lg-6 right-img order-lg-2 order-1">
+                            <img src="	https://www.beingcert.com/img/about.png"
+                                class="img-fluid" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--whowearestart-->
+
+            <!--Why Beingcert-->
+            <section id="who" class="cus-y-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 title">
+                            <h4>Why Beingcert Certifications </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 left-img order-lg-1 order-1">
+                            <img
+                                src="https://www.beingcert.com/img/whyBeingcert.png"
+                                class="img-fluid" />
+                        </div>
+                        <div class="col-lg-6 text order-lg-2 order-1">
+                            <p>
+                                With the globally accepted certifications,
+                                Beingcert has accelerated the growth of several
+                                professionals who are looking for a promotion or
+                                career boost.
+                                Beingcert has a very good catalogue of programs
+                                crafted by excellent trainers that are
+                                role-based, thoroughly researched, and have a
+                                proven record of successful outcomes.
+                                One of the top certification platforms has
+                                cultivated leaders who easily navigate through
+                                the project challenges and thrive in the booming
+                                IT and digital-driven sphere.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--Why Beingcert-->
+
+            <!--benefit-->
+            <section id="who" class="cus-y-3 bg-light mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 title m-0 py-3">
+                            <h4>Board Of Directors </h4>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div
+                            class="col-lg-8  text order-lg-1 order-2 text-center">
+                            <p>
+                                Our <a href="./bod.html" target="_blank"
+                                    style="
+                                text-decoration: none;
+                            ">board of
+                                    directors</a> is made up of top
+                                executives and thought-leaders working in
+                                various esteemed positions within the IT
+                                channel. They help guide the association and the
+                                IT industry at large.
+                            </p>
+                        </div>
+                        <!-- <div class="col-lg-6 right-img order-lg-2 order-1">
+                            <img src="https://www.beingcert.com/img/benefit.png"
+                                class="img-fluid" />
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+            <!--benefit-->
+
+            <!--Our Mission-->
+            <section id="who" class="cus-y-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 title">
+                            <h4>Our Mission </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 left-img ">
+                            <img src="https://www.beingcert.com/img/mission.png"
+                                class="img-fluid" />
+                        </div>
+                        <div class="col-lg-6 text ">
+                            <p>
+                                To deliver vendor-neutral certification
+                                solutions globally that advance the career of
+                                candidates while keeping the maxim of holistic
+                                development in our thoughts and process.
+                                Our aim is not just limited to providing
+                                internationally accredited certification but
+                                empowering them with work-ready experience. We
+                                uphold the principles of creating an inclusive
+                                environment with transparency where clients can
+                                cherish hassle-free services.
+                            </p>
+                            <p>
+                                As we value each of our clients with the utmost
+                                respect, we will always strive to become one of
+                                the most reliable certification provider
+                                platforms and rejuvenate our approach to meet
+                                client satisfaction in an efficient, friendly,
+                                and professional manner.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--Our Mission-->
+
+            <!--footer start-->
+            <footer>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="f-logo">
+                                <img
+                                    src="https://www.beingcert.com/img/f-logo.png"
+                                    class="img-fluid f-logo" />
+                                <p>
+                                    Our activities are monitored and regulated
+                                    by an independent Governing Body. This
+                                    ensures the integrity of our certification
+                                    process and its continuing compliance with
+                                    the requirements of international and
+                                    national accreditation criteria.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="quick-links">
+                                <h5>Links </h5>
+                                <ul>
+                                    <li><a href="https://www.beingcert.com">Home
+                                        </a></li>
+                                    <li><a
+                                            href="https://www.beingcert.com/about">About
+                                            Us </a></li>
+                                    <li><a
+                                            href="https://www.beingcert.com/contact">Contact
+                                            Us </a></li>
+                                    <li><a href="https://www.beingcert.com/blog">Blog
+                                        </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="quick-links">
+                                <h5>Partners </h5>
+                                <ul>
+                                    <li><a
+                                            href="https://www.beingcert.com/academic-partner">Academic
+                                            Partner</a></li>
+                                    <li><a
+                                            href="https://www.beingcert.com/delivery-partner">Delivery
+                                            Partner</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="quick-links">
+                                <h5>Candidates </h5>
+                                <ul>
+                                    <li><a
+                                            href="https://www.beingcert.com/locate-test-center">Locate
+                                            Test Center</a></li>
+                                    <li><a
+                                            href='https://www.beingcert.com/locate-training-partner'>Find
+                                            An Authorized Training Partner</a></li>
+                                    <li><a
+                                            href="https://www.beingcert.com/validate">Validate
+                                            Certificate</a></li>
+                                    <li><a href="https://www.beingcert.com/faqs">FAQ's
+                                        </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="quick-links">
+                                <h5>Policies </h5>
+                                <ul>
+                                    <li><a
+                                            href="https://www.beingcert.com/refund-policy">Refund
+                                            Policy </a></li>
+                                    <li><a
+                                            href="https://www.beingcert.com/privacy-policy">Privacy
+                                            Policy </a></li>
+                                    <li><a
+                                            href="https://www.beingcert.com/terms">Terms
+                                            of Use </a></li>
+                                    <li><a
+                                            href="https://www.beingcert.com/monetizing-gateway">Monitoring
+                                            Gateway </a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>Get All notifications in your Mailbox </h4>
+                            <div class="footer-subscribe-wrap">
+                                <input name="ctl00$txtSubscribeEmailId"
+                                    type="email" id="txtSubscribeEmailId"
+                                    placeholder="Enter Your Email Id"
+                                    autocomplete="off" />
+                                <button id="btnSubscribe" type="button"
+                                    class="btn Subscribe"
+                                    onclick="SubscribeEmailId();">Subscribe
+                                </button>
+                                <div id="dvSubscribeLoding"
+                                    class="btn Subscribe"
+                                    style="display: none; text-align: center;"><i
+                                        class="fa fa-circle-o-notch fa-spin"></i>Loading..</div>
+
+                            </div>
+                            <div id="dvSuccessMessage" style="display: none;">
+                                <p style="font-size: 14px; color: white;">Thank
+                                    You For Subscribing.</p>
+                            </div>
+                            <span class="errorSubscribeEmailId"
+                                style="color: red"></span>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Contact Us </h4>
+                            <ul>
+                                <li><a href="https://www.beingcert.com"><i
+                                            class="bi bi-globe-americas mr-1"></i>Beingcert
+                                        LLC</a> </li>
+                                <li><a href="mailto:info@beingcert.com"><i
+                                            class="bi bi-envelope mr-1"></i>info@beingcert.com
+                                    </a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-2 support">
+                            <h4>Support </h4>
+                            <ul>
+                                <li><a href="https://www.beingcert.com/contact"><i
+                                            class="bi bi-headset"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Follow us on </h4>
+                            <ul class="list-inline social-media-footer mb-30">
+                                <li class="facebook"><a
+                                        href="https://www.facebook.com/beingcert">f</a></li>
+                                <li class="linkedin"><a
+                                        href="https://www.linkedin.com/company/beingcert">in</a></li>
+                                <li class="instagram"><a
+                                        href="https://www.instagram.com/beingcert_llc">i</a></li>
+                                <li class="pinterest"><a
+                                        href="https://in.pinterest.com/beingcertllc">p</a></li>
+                                <li class="twitter"><a
+                                        href="https://twitter.com/BeingCert">t</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr style="background: #0c0f12; height: 2px;">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p class="ll-last"><span class="last-text">© 2023 -
+                                    beingcert </span>All Rights Reserved. </p>
+                        </div>
+                    </div>
+                </div>
+
+            </footer>
+            <!--footer end-->
+            <style>
+            .ui-autocomplete-input {
+                background: #fff;
+            }
+        </style>
+            <script
+                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+            <script src="https://www.beingcert.com/js/validation.js"
+                type="text/javascript"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+            <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.8/js/intlTelInput-jquery.min.js"></script>
+            <script type="text/javascript">
+            //telephone//
+            $(function () {
+                var code = "+1"; // Assigning value from model.
+                $('#txtphnnumber').val(code);
+                $('#txtphnnumber').intlTelInput({
+                    autoHideDialCode: true,
+                    autoPlaceholder: "ON",
+                    dropdownContainer: document.body,
+                    formatOnDisplay: true,
+                    hiddenInput: "full_number",
+                    initialCountry: "auto",
+                    nationalMode: true,
+                    placeholderNumberType: "MOBILE",
+                    preferredCountries: ['US'],
+                    separateDialCode: true
+                });
+
+            });
+            $('#Companies_logo').owlCarousel({
+                loop: true,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                autoplayHoverPause: true,
+                margin: 20,
+                autoplayTimeout: 2000,
+                responsive: {
+                    320: {
+                        items: 2
+                    },
+                    480: {
+                        items: 2
+                    },
+                    767: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 6
+                    }
+                }
+            })
+            $('#cus-testi').owlCarousel({
+                margin: 10,
+                loop: true,
+                nav: true,
+                navText: ["<img src='img/prev.png'>", "<img src='img/next.png'>"],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    507: {
+                        items: 1
+                    },
+                    770: {
+                        items: 2
+                    },
+                    1200: {
+                        items: 2
+                    },
+                    1500: {
+                        items: 2
+                    }
+                }
+            })
+            function SubscribeEmailId() { if ("" == document.getElementById("txtSubscribeEmailId").value) return $("#txtSubscribeEmailId").css({ border: "1px solid red", "box-shadow": "rgba(113, 113, 113, 0.73) 1px 0px 5px;" }), !0; $("#txtSubscribeEmailId").css({ border: "", "box-shadow": "" }); var a = $("#txtSubscribeEmailId").val(); if ("" != a) { if (!a.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) return $(".errorSubscribeEmailId").text("Invalid Email Id."), !1; $(".errorSubscribeEmailId").text("") } $("#btnSubscribe").css("display", "none"), $("#dvSubscribeLoding").css("display", "block"), $.ajax({ type: "POST", url: "../index.aspx/SubscribeEmail", data: '{EmailId: "' + $("#txtSubscribeEmailId")[0].value + '" }', contentType: "application/json; charset=utf-8", dataType: "json", success: function (a) { !1 == a.d ? ($(".errorSubscribeEmailId").css("display", "block"), $(".errorSubscribeEmailId").text("You Are Already Subscribed."), $("#dvSuccessMessage").css("display", "none"), $("#btnSubscribe").css("display", "block"), $("#dvSubscribeLoding").css("display", "none"), $("#txtSubscribeEmailId").val(""), $(".errorSubscribeEmailId").delay(5e3).fadeOut("slow")) : ($(".errorSubscribeEmailId").css("display", "none"), $("#btnSubscribe").css("display", "block"), $("#dvSubscribeLoding").css("display", "none"), $("#dvSuccessMessage").css("display", "block"), $("#txtSubscribeEmailId").val(""), $(".errorSubscribeEmailId").text(""), $("#dvSuccessMessage").delay(5e3).fadeOut("slow")) }, failure: function (a) { alert("something wrong.") } }) }
+        </script>
+            <script type="text/javascript">
+            var SearchArrayData = [];
+
+            function SearchData() {
+                SearchArrayData = [];
+                $.ajax({
+                    url: 'https://www.beingcert.com/Webservice/CertificationSearch.asmx/GetCertificateName',
+                    dataType: "json",
+                    type: "POST",
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $.map(data.d, function (item) {
+                            SearchArrayData.push({
+                                value: item["CertificateName"],
+                                url: item["CertificateUniquePaperName"],
+                                key: item["Id"]
+                            });
+                        });
+                    }
+                });
+            }
+
+            function SearchCertification() {
+                SearchData();
+                $("#txtSearchCertification").autocomplete({
+                    source: $.map(SearchArrayData, function (item) {
+                        $(".inner-page-header").css("z-index", 1);
+                        return {
+                             Url: item.url,
+                            label: item.value,
+                            val: item.key
+                        }
+                    }),
+
+                    select: function (e, i) {
+                        $(".inner-page-header").css("z-index", 999);
+                        window.location.href = window.location.origin + "/Certification/" + i.item.Url + "";
+                    },
+                    minLength: 1
+                });
+            }
+
+            function ClearText() {
+                $("#txtSearchCertification")[0].value = "";
+                SearchCertification();
+            }
+
+            function Loaddata() {
+                ClearText();
+                //ChangeHomePagePath();
+            };
+        </script>
+        </form>
+    </body>
+</html>
